@@ -20,7 +20,7 @@ const App: () => Node = () => {
 
   const addTodo = async () => {
     try {
-      await db.todos.insert({_id: generatedId(), text, completed: false});
+      await db.tasks.insert({_id: generatedId(), text, completed: false});
       setText('');
       Keyboard.dismiss();
     } catch (err) {
@@ -30,7 +30,7 @@ const App: () => Node = () => {
 
   const deleteTodo = async todo => {
     try {
-      const doc = db.todos.findOne({
+      const doc = db.tasks.findOne({
         selector: {_id: todo.get('_id')},
       });
       await doc.remove();
@@ -52,7 +52,7 @@ const App: () => Node = () => {
 
   const updateTodo = async () => {
     try {
-      const doc = db.todos.findOne({
+      const doc = db.tasks.findOne({
         selector: {_id: todoIdToUpdate},
       });
 
@@ -69,7 +69,7 @@ const App: () => Node = () => {
 
   const toggleComplete = async todo => {
     try {
-      const doc = db.todos.findOne({
+      const doc = db.tasks.findOne({
         selector: {_id: todo.get('_id')},
       });
       await doc.update({$set: {completed: !todo.completed}});
@@ -81,8 +81,8 @@ const App: () => Node = () => {
 
   useEffect(() => {
     let sub;
-    if (db && db.todos) {
-      sub = db.todos.find().$.subscribe(todos => {
+    if (db && db.tasks) {
+      sub = db.tasks.find().$.subscribe(todos => {
         // console.log(JSON.stringify(todos, null, "\t"));
         setTodos(todos);
       });

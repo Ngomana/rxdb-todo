@@ -19,12 +19,11 @@ addPouchPlugin(SQLiteAdapter);
 addPouchPlugin(require('pouchdb-adapter-http'));
 addRxPlugin(RxDBReplicationCouchDBPlugin);
 
-const syncURL =
-  'http://admin:bmw123@ec2-13-250-165-8.ap-southeast-1.compute.amazonaws.com:5984/'; // Replace localhost with a public ip address!
-const dbName = 'tasks';
+const syncURL = 'https://admin:bmw123@couchdb-dev.buildmywealth.app/'; // Replace localhost with a public ip address!
+const dbName = 'todos';
 const todoCollectionURL = `${syncURL}tasks/`;
 
-console.debug('TODO REMOTE URL: ', todoCollectionURL);
+console.debug('TASKS REMOTE URL: ', todoCollectionURL);
 
 const initializeDB = async () => {
   let db;
@@ -50,11 +49,11 @@ const initializeDB = async () => {
 
   try {
     await db.addCollections({
-      todos: {
+      tasks: {
         schema: {
           version: 0,
-          title: 'todo schema',
-          description: 'todo',
+          title: 'tasks schema',
+          description: 'tasks',
           primaryKey: '_id',
           type: 'object',
           keyCompression: false,
@@ -79,7 +78,7 @@ const initializeDB = async () => {
 
     // console.log("Syncing to remote database...");
 
-    const replicationState = await db.collections.todos.syncCouchDB({
+    const replicationState = await db.collections.tasks.syncCouchDB({
       remote: todoCollectionURL,
       waitForLeadership: true,
       direction: {

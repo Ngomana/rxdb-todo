@@ -9,8 +9,8 @@ const TodoItem = ({todo, editTodo, deleteTodo, toggleComplete}) => {
     <TouchableOpacity
       onLongPress={() => {
         Alert.alert(
-          'Delete or Update',
-          null,
+          'Attention',
+          'Do you want to delete this todo?',
           [
             {
               text: 'Edit',
