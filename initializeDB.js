@@ -20,7 +20,7 @@ addPouchPlugin(require('pouchdb-adapter-http'));
 addRxPlugin(RxDBReplicationCouchDBPlugin);
 
 const syncURL = 'https://admin:bmw123@couchdb-dev.buildmywealth.app/'; // Replace localhost with a public ip address!
-const dbName = 'todos';
+const dbName = 'tasks';
 const todoCollectionURL = `${syncURL}tasks/`;
 
 console.debug('TASKS REMOTE URL: ', todoCollectionURL);

@@ -8,7 +8,7 @@ const Heading = () => {
         To-Do List
       </Text>
       <Text fontSize={'md'} color={'gray.400'}>
-        Hello Bwakeningshet
+        Wassup bro?
       </Text>
     </Box>
   );

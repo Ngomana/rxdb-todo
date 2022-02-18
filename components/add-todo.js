@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     paddingHorizontal: spacing.md,
-    paddingVertical: spacing.sm,
+    paddingVertical: 10,
   },
   rightContainer: {
     marginLeft: spacing.sm,
@@ -86,11 +86,11 @@ const styles = StyleSheet.create({
     borderRadius: radius.lg,
   },
   iconWrapper: {
-    height: 64,
-    width: 64,
+    height: 60,
+    width: 60,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.pink,
+    backgroundColor: '#002851',
     borderRadius: radius.full,
   },
 });

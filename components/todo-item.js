@@ -7,9 +7,9 @@ import Swipeout from 'react-native-swipeout';
 
 const TodoItem = ({todo, editTodo, deleteTodo, toggleComplete}) => {
   const swipeoutBtns = [
-    { text: 'Edit', onPress: () => editTodo(todo) },
-    { text: 'Delete', onPress: () => deleteTodo(todo) },
-  ]
+    {text: 'Edit', backgroundColor: 'purple', onPress: () => editTodo(todo)},
+    {text: 'Delete', backgroundColor: 'red', onPress: () => deleteTodo(todo)},
+  ];
   return (
     // <TouchableOpacity
     //   onLongPress={() => {
@@ -31,7 +31,10 @@ const TodoItem = ({todo, editTodo, deleteTodo, toggleComplete}) => {
     //       },
     //     );
     //   }}>
-    <Swipeout right={swipeoutBtns} autoClose="true" backgroundColor="transparent">
+    <Swipeout
+      right={swipeoutBtns}
+      autoClose="true"
+      backgroundColor="transparent">
       <Box
         backgroundColor={'info.800'}
         padding={6}
