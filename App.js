@@ -14,14 +14,16 @@ const App: () => Node = () => {
   const [db, setDb] = useState(null);
   const [todos, setTodos] = useState([]);
   const [text, setText] = useState('');
+  const [text1, setText1] = useState('');
   const [todoIdToUpdate, setTodoIdToUpdate] = useState('');
 
   const editMode = !!todoIdToUpdate.length;
 
   const addTodo = async () => {
     try {
-      await db.tasks.insert({_id: generatedId(), text, completed: false});
+      await db.tasks.insert({_id: generatedId(), text,text1, completed: false});
       setText('');
+      setText1('');
       Keyboard.dismiss();
     } catch (err) {
       console.log(err.message);
@@ -43,11 +45,13 @@ const App: () => Node = () => {
   const editTodo = todo => {
     setTodoIdToUpdate(todo._id);
     setText(todo.text);
+    setText1(todo.text1);
   };
 
   const cancelEditTodo = () => {
     setTodoIdToUpdate('');
     setText('');
+    setText1('');
   };
 
   const updateTodo = async () => {
@@ -60,6 +64,7 @@ const App: () => Node = () => {
 
       Keyboard.dismiss();
       setText('');
+      setText1('');
       setTodoIdToUpdate('');
     } catch (err) {
       console.error('Cannot update todo');
@@ -127,6 +132,7 @@ const App: () => Node = () => {
           editMode={editMode}
           text={text}
           setText={setText}
+          setText1={setText1}
           onSubmit={editMode ? updateTodo : addTodo}
           cancelEditTodo={cancelEditTodo}
         />

@@ -6,7 +6,15 @@ import CloseIcon from 'react-native-vector-icons/AntDesign';
 import PlusIcon from 'react-native-vector-icons/Entypo';
 import EditIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const AddTodo = ({editMode, text, setText, onSubmit, cancelEditTodo}) => {
+const AddTodo = ({
+  editMode,
+  text,
+  setText,
+  text1,
+  setText1,
+  onSubmit,
+  cancelEditTodo,
+}) => {
   return (
     <>
       {editMode && (
@@ -24,13 +32,23 @@ const AddTodo = ({editMode, text, setText, onSubmit, cancelEditTodo}) => {
       <View style={styles.container}>
         <View style={styles.leftContainer}>
           <Input
-            size={'lg'}
+            size={'md'}
             style={styles.input}
             placeholder="Write a task"
             value={text}
             borderColor={'blue.700'}
             variant="filled"
             onChangeText={value => setText(value)}
+          />
+          <Input
+            size={'lg'}
+            style={styles.input}
+            paddingY={10}
+            placeholder="Task Description"
+            value={text1}
+            borderColor={'blue.700'}
+            variant="filled"
+            onChangeText={value => setText1(value)}
           />
         </View>
         <View style={styles.rightContainer}>

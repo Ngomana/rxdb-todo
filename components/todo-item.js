@@ -3,29 +3,35 @@ import {Box, Text} from 'native-base';
 import {View, StyleSheet, TouchableOpacity, Alert} from 'react-native';
 import {colors, fontSizes, radius, spacing} from '../constant';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import Swipeout from 'react-native-swipeout';
 
 const TodoItem = ({todo, editTodo, deleteTodo, toggleComplete}) => {
+  const swipeoutBtns = [
+    { text: 'Edit', onPress: () => editTodo(todo) },
+    { text: 'Delete', onPress: () => deleteTodo(todo) },
+  ]
   return (
-    <TouchableOpacity
-      onLongPress={() => {
-        Alert.alert(
-          'Attention',
-          'Do you want to delete this todo?',
-          [
-            {
-              text: 'Edit',
-              onPress: () => editTodo(todo),
-            },
-            {
-              text: 'Delete',
-              onPress: () => deleteTodo(todo),
-            },
-          ],
-          {
-            cancelable: true,
-          },
-        );
-      }}>
+    // <TouchableOpacity
+    //   onLongPress={() => {
+    //     Alert.alert(
+    //       'Attention',
+    //       'Do you want to delete this todo?',
+    //       [
+    //         {
+    //           text: 'Edit',
+    //           onPress: () => editTodo(todo),
+    //         },
+    //         {
+    //           text: 'Delete',
+    //           onPress: () => deleteTodo(todo),
+    //         },
+    //       ],
+    //       {
+    //         cancelable: true,
+    //       },
+    //     );
+    //   }}>
+    <Swipeout right={swipeoutBtns} autoClose="true" backgroundColor="transparent">
       <Box
         backgroundColor={'info.800'}
         padding={6}
@@ -47,11 +53,12 @@ const TodoItem = ({todo, editTodo, deleteTodo, toggleComplete}) => {
             {todo.text}
           </Text>
           <Text color={'white'} fontWeight={500}>
-            Note Description
+            {todo.text1}
           </Text>
         </Box>
       </Box>
-    </TouchableOpacity>
+      {/* </TouchableOpacity> */}
+    </Swipeout>
   );
 };
 

@@ -64,11 +64,14 @@ const initializeDB = async () => {
             text: {
               type: 'string',
             },
+            text1: {
+              type: 'string',
+            },
             completed: {
               type: 'boolean',
             },
           },
-          required: ['_id', 'text', 'completed'],
+          required: ['_id', 'text', 'text1', 'completed'],
         },
       },
     });
